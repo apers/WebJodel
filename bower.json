@@ -1,0 +1,25 @@
+{
+  "name": "JodelTest",
+  "main": "index.html",
+  "version": "0.0.0",
+  "authors": [
+    "Audun Øygard <audunjoy@student.ifi.uio.no>"
+  ],
+  "description": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "*",
+    "bootstrap": "*",
+    "react": "*"
+  }
+}
