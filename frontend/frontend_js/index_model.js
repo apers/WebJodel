@@ -81,7 +81,7 @@ var Map = React.createClass({
 
 /*
  *
- *
+ * Location chooser component
  *
  */
 var LocationChooser = React.createClass({
