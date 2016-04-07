@@ -1,4 +1,8 @@
-/* Location chooser */
+/* 
+ *
+ * Map component
+ *
+ */
 var Map = React.createClass({
 	globalLat: null,
 	globalLng: null,
@@ -75,17 +79,24 @@ var Map = React.createClass({
 	}
 });
 
+/*
+ *
+ *
+ *
+ */
 var LocationChooser = React.createClass({
 	locationInfo: null,
 	accessToken: null,
 	getInitialState: function() {
 		return {city: '-',};
 	},
+    // Hide map and shoe message view
 	goButtonClick: function() {
 		this.getJodelToken(this.locationInfo);
 		$('#location-chooser').slideUp();
     	$('#message-view').fadeIn();
 	},
+    // Get previous used hash from cookies
 	getHashFromCookies: function() {
         var cookieHash = /hash=(.+)/.exec(document.cookie);
         if (cookieHash == null) {
@@ -94,6 +105,7 @@ var LocationChooser = React.createClass({
             return cookieHash[1];
         }
 	},
+    // Fetch API-token from backend
 	getJodelToken: function(locationInfo) {
         var hash = this.getHashFromCookies();
         if (hash == false) {
@@ -182,6 +194,12 @@ var LocationMap = React.createClass({
 	}
 });
 
+/*
+ *
+ * Message component
+ *
+ */
+
 var Message = React.createClass({
 	children: null,
 	getInitialState: function() {
@@ -242,6 +260,12 @@ var Message = React.createClass({
     }
 });
 
+/*
+ *
+ * Message list component
+ *
+ */
+
 var MessageList = React.createClass({
 	componentDidMount : function() {
 		var feed = document.getElementById('message-feed');
@@ -287,11 +311,16 @@ var MessageList = React.createClass({
 	}
 });
 
+/*
+ *
+ * Message view component
+ *
+ */
 var MessageView = React.createClass({
 	componentDidMount: function() {
-window.onunload = function(){
-	return false;
-}
+        window.onunload = function(){
+	        return false;
+        }   
 	},
 	render: function() {
 		return(
@@ -306,12 +335,17 @@ window.onunload = function(){
 	}
 });
 
+/*
+ *
+ * Main view component
+ *
+ */
 var Content = React.createClass({
 	accessToken: null,
 	getInitialState: function() {
 		return {
-			messages: [],
-			map_pin_location: {lat: 59.91, lng: 10.75}
+            messages: [],
+	        map_pin_location: {lat: 59.91, lng: 10.75}
 		};
 	},
 	setMapPinCallback: function(location) {
@@ -345,6 +379,4 @@ var Content = React.createClass({
 	}
 });
 
-ReactDOM.render(
-	<Content/>,
-	document.getElementById('content'));
+ReactDOM.render(<Content/>, document.getElementById('content'));
